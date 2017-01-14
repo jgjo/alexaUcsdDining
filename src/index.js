@@ -98,7 +98,7 @@ HelloWorld.prototype.intentHandlers = {
         var speechText = "";
         
         //Reprompt text in case the user does not respond   
-        var repromptText = "You can ask, what's there to eat today";
+        var repromptText = "You can ask, what is there to eat today";
         
         //get input slots        
         var cafeteria = intent.slots.cafeteria.value;
@@ -120,7 +120,7 @@ HelloWorld.prototype.intentHandlers = {
         if(attCafeteria!==undefined && attMealType!==undefined) {
             asyncResponse = true;
             //make api call
-            getJsonFromCalvin(cafeteria, mealType, function(data){
+            getJsonFromCalvin(attCafeteria, attMealType, function(data){
             data = data[0];
             console.log('Helloworld ucsdDining response: ' + data);
             //command fails
@@ -134,7 +134,7 @@ HelloWorld.prototype.intentHandlers = {
                 data = data.resp;
                 if(data.length==0)
                 {
-                    speechText = String(cafeteria)+" is not serving anything today";
+                    speechText = String(attCafeteria)+" is not serving anything today";
                 }
                 else
                 {
@@ -148,14 +148,11 @@ HelloWorld.prototype.intentHandlers = {
                             meals += data[i].name + ", ";
                     }
                     
-                    speechText = String(cafeteria)+" is serving "+ String(meals) +" for "+ String(mealType) +" today";
+                    speechText = String(attCafeteria)+" is serving "+ String(meals) +" for "+ String(attMealType) +" today";
                 }
             }
             response.ask(speechText);
             });
-            
-            repromptText = "I am waiting for no reason";
-            
         }
         else if(attCafeteria!==undefined && attMealType===undefined) {
           speechText = "Are you looking for breakfast, lunch or dinner options?";
