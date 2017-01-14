@@ -21,13 +21,16 @@
  /* CALLING THE API */
 var http = require('https');
 
-var url = function(cafeteria, mealType){
-    return 'https://alexa-skill-restaurant.herokuapp.com/items/' + cafeteria.toLowerCase() + '/' + mealType.toLowerCase() ;
+var url = function(cafeteria, mealType, dietType){
+    var urlStr = 'https://alexa-skill-restaurant.herokuapp.com/items/' + cafeteria.toLowerCase() + '/' + mealType.toLowerCase();
+    //'/' + dietType.toLowerCase() ;
+    console.log("Helloworld ucsdDining request to alexa-skill-restaurant: " + urlStr); 
+    return urlStr;
 };
 
-var getJsonFromCalvin = function(cafeteria,mealType,callback){
+var getJsonFromCalvin = function(cafeteria,mealType,dietType,callback){
     
-    http.get(url(cafeteria,mealType), function(res){
+    http.get(url(cafeteria,mealType,dietType), function(res){
     var body = '';
 
     res.on('data', function(data){
@@ -96,7 +99,8 @@ HelloWorld.prototype.intentHandlers = {
     "cafeteriaMenu": function (intent, session, response) {
         var cafeteria = intent.slots.cafeteria.value;
         var mealType = intent.slots.mealType.value;
-        getJsonFromCalvin(cafeteria, mealType, function(data){
+        var dietType = intent.slots.dietType.value;
+        getJsonFromCalvin(cafeteria, mealType, dietType, function(data){
             data = data[0];
             if(data.status=="failure")
             {
