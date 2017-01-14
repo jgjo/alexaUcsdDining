@@ -70,6 +70,8 @@ HelloWorld.prototype.intentHandlers = {
         //get input slots
         var cafeteria = intent.slots.cafeteria.value;
         var mealType = intent.slots.mealType.value;
+
+        // save new information to attributes
         if(cafeteria!==undefined ) {
           session.attributes.cafeteria = String(cafeteria);
         }
@@ -79,7 +81,7 @@ HelloWorld.prototype.intentHandlers = {
         var attCafeteria = session.attributes.cafeteria;
         var attMealType = session.attributes.mealType;
 
-        //Check if session variables are already initialized
+        //Produce response
         if(attCafeteria!==undefined && attMealType!==undefined) {
           speechText = "All information given. Querying " + String(attMealType)  + " meals at " + String(attCafeteria);
         }
