@@ -13,6 +13,27 @@ Goody's
 Goody's To Go Truck
 Roots
 Sixty-Four North
+64 Degrees
+Canyon Vista
+Foodworx
+OceanView
+Pines
+The Bistro
+Club Med
+Flavors of The Word Food Truck
+Goody's
+Goody's To Go Truck
+Roots
+Sixty-Four North
+Warren College
+Sixth College
+The Village East
+School of Medicine
+Revelle College 
+Marshall College
+Muir College 
+Food Truck
+Food Trucks
 ],
 "MEAL_TYPE" :
 [
