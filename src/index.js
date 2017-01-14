@@ -70,6 +70,7 @@ HelloWorld.prototype.intentHandlers = {
         //session['mealType'] = String(mealType);
 
         var output = String(cafeteria)+" is serving fries for "+ String(mealType) +" today. ";
+
         response.tell(output); 
     }
 };
