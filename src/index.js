@@ -82,7 +82,9 @@ HelloWorld.prototype.eventHandlers.onSessionStarted = function (sessionStartedRe
 
 HelloWorld.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
     console.log("HelloWorld onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
-    handleCafeteriaMenuIntent(session, response);
+    var speechOutput = "Welcome to the Alexa Skills Kit, you can say hello";
+    var repromptText = "You can say hello";
+    response.ask(speechOutput, repromptText);
 };
 
 HelloWorld.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, session) {
@@ -132,7 +134,7 @@ HelloWorld.prototype.intentHandlers = {
             else
             {
                 data = data.resp;
-                if(data.length==0)
+                if(data.length===0)
                 {
                     speechText = String(attCafeteria)+" is not serving anything today";
                 }
@@ -175,6 +177,68 @@ HelloWorld.prototype.intentHandlers = {
         if(!asyncResponse) {
             response.ask(speechOutput, repromptOutput);
         }
+    },
+
+    "dietaryRequirement": function (intent, session, response) { 
+      var diet = intent.slots.diet.value;
+      var restrictedFood = intent.slots.restrictedFood.value;
+      var vegetarianChoice;
+      var veganChoice;
+      var glutenChoice;
+      if(diet!==undefined) {
+        switch(diet.toLowerCase()) {
+            case "vegetarian":
+                vegetarianChoice = true;
+                break;
+            case "vegan":
+                veganChoice = true;
+                break;
+            case "gluten friendly":
+                glutenChoice = true;
+                break;
+            case "gluten":
+                glutenChoice = true;
+                break;
+            case "gluten-free":
+                glutenChoice = true;
+                break;
+        }
+      }
+
+      if(restrictedFood!==undefined) {
+        switch(restrictedFood.toLowerCase()) {
+          case "meat":
+            vegetarianChoice = true;
+            break;
+          case "gluten":
+            glutenChoice = true;
+            break;
+        }
+      }
+
+      if(vegetarianChoice) {
+        session.attributes.vegetarian = true;
+      }
+      if(veganChoice) {
+        session.attributes.vegan = true;
+      }
+      if(glutenChoice) {
+        session.attributes.gluten = true;
+      }
+
+      var speechText = "I will only show ";
+      var options = []
+      if(session.attributes.vegetarian === true) {
+        options.push("vegetarian");
+      }
+      if(session.attributes.vegan === true) {
+        options.push("vegan");
+      }
+      if(session.attributes.gluten === true) {
+        options.push("gluten-friendly");
+      }     
+
+      response.ask(speechText + options.join(", ") + " options.");
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
