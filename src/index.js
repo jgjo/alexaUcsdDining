@@ -17,6 +17,35 @@
  *  User: "Alexa, tell Hello World to say hello"
  *  Alexa: "Hello World!"
  */
+ 
+ /* CALLING THE API */
+var http = require('https');
+
+var url = function(cafeteria, mealType){
+    return 'https://alexa-skill-restaurant.herokuapp.com/items/' + cafeteria.toLowerCase() + '/' + mealType.toLowerCase() ;
+};
+
+var getJsonFromCalvin = function(cafeteria,mealType,callback){
+    
+    http.get(url(cafeteria,mealType), function(res){
+    var body = '';
+
+    res.on('data', function(data){
+      body += data;
+      console.log("Helloworld ucsdDining receiving data from alexa-skill-restaurant: " + data); 
+    });
+
+    res.on('end', function(){
+      var result = JSON.parse(body);
+      console.log("Helloworld ucsdDining received data from alexa-skill-restaurant: " + body ); 
+      callback(result);
+    });
+
+  }).on('error', function(e){
+    console.log('Helloworld ucsdDining error in receiving data: ' + e);
+  });
+    
+};
 
 /**
  * App ID for the skill
@@ -63,15 +92,31 @@ HelloWorld.prototype.eventHandlers.onSessionEnded = function (sessionEndedReques
 
 HelloWorld.prototype.intentHandlers = {
     // register custom intent handlers
+    // register custom intent handlers
     "cafeteriaMenu": function (intent, session, response) {
         var cafeteria = intent.slots.cafeteria.value;
         var mealType = intent.slots.mealType.value;
-        //session['cafeteria'] = String(cafeteria);
-        //session['mealType'] = String(mealType);
-
-        var output = String(cafeteria)+" is serving fries for "+ String(mealType) +" today. ";
-
-        response.tell(output); 
+        getJsonFromCalvin(cafeteria, mealType, function(data){
+            
+            if(data.length==0)
+            {
+                response.tell(String(cafeteria)+" is not serving anything today");
+            }
+            else
+            {
+                var meals = '';
+                for (var i = 0; i < data.length; i++) {
+                    if(i == data.length - 1)
+                        meals += data[i].name;
+                    else if(i == data.length -2)
+                        meals += data[i].name + " and ";
+                    else
+                        meals += data[i].name + ", ";
+                }
+                console.log('Helloworld ucsdDining test meals: ' + meals);
+                response.tell(String(cafeteria)+" is serving "+ String(meals) +" for "+ String(mealType) +" today");
+            }
+        }); 
     }
 };
 
