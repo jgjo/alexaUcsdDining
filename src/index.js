@@ -23,10 +23,40 @@ var http = require('https');
 
 var url = function(cafeteria, mealType){
     var urlStr = 'https://alexa-skill-restaurant.herokuapp.com/items/' + cafeteria.toLowerCase() + '/' + mealType.toLowerCase();
+    
     //'/' + dietType.toLowerCase() ;
     console.log("Helloworld ucsdDining request to alexa-skill-restaurant: " + urlStr); 
     return urlStr;
 };
+
+var getDietaryChoices = function(session) {
+    var options = []
+    if(session.attributes.vegetarian === true) {
+      options.push("vegetarian");
+    }
+    if(session.attributes.vegan === true) {
+      options.push("vegan");
+    }
+    if(session.attributes.gluten === true) {
+      options.push("gluten friendly");
+    }  
+    return options;
+}
+
+ var checkMealAgainstDiet = function(meal, dietChoices) {
+  meal_diet_type = undefined;
+  if(meal.diet_type[0] !== undefined){
+    meal_diet_type = String(meal.diet_type[0].type).toLowerCase();
+  }
+  console.log(meal.name + " is " + meal_diet_type + " and the user's diet choices are " + dietChoices.toString());
+  var matchingDiet = (dietChoices.indexOf(meal_diet_type) > -1)
+  if(matchingDiet) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
 
 var getJsonFromCalvin = function(cafeteria,mealType,callback){
     
@@ -140,17 +170,26 @@ HelloWorld.prototype.intentHandlers = {
                 }
                 else
                 {
-                    var meals = '';
-                    for (var i = 0; i < data.length; i++) {
-                        if(i == data.length - 1)
-                            meals += data[i].name;
-                        else if(i == data.length -2)
-                            meals += data[i].name + " and ";
-                        else
-                            meals += data[i].name + ", ";
+                    meals = [];
+                    var dietChoices =  getDietaryChoices(session);
+                    diet_filter = false;
+                    if(dietChoices.length >= 1) {
+                      diet_filter = true;
                     }
-                    
-                    speechText = String(attCafeteria)+" is serving "+ String(meals) +" for "+ String(attMealType) +" today";
+                    for (var i = 0; i < data.length; i++) {
+                        meal = data[i];
+                        if(!diet_filter || checkMealAgainstDiet(meal, dietChoices)){
+                          // Meal meets the dietary choices and is therefore listed
+                          meals.push(meal.name);
+                        }
+                        else {
+                          // Meal doesn't meet the dietary choices
+                          continue;
+                        }
+                    }
+                    //format meals nicely
+                    var meals_formatted = [meals.slice(0, -1).join(', '), meals.slice(-1)[0]].join(meals.length < 2 ? '' : ' and ');
+                    speechText = String(attCafeteria)+" is serving "+ String(meals_formatted) +" for "+ String(attMealType) +" today";
                 }
             }
             response.ask(speechText);
@@ -227,16 +266,7 @@ HelloWorld.prototype.intentHandlers = {
       }
 
       var speechText = "I will only show ";
-      var options = []
-      if(session.attributes.vegetarian === true) {
-        options.push("vegetarian");
-      }
-      if(session.attributes.vegan === true) {
-        options.push("vegan");
-      }
-      if(session.attributes.gluten === true) {
-        options.push("gluten-friendly");
-      }     
+      var options = getDietaryChoices(session);
 
       response.ask(speechText + options.join(", ") + " options.");
     },
