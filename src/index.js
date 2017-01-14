@@ -97,24 +97,32 @@ HelloWorld.prototype.intentHandlers = {
         var cafeteria = intent.slots.cafeteria.value;
         var mealType = intent.slots.mealType.value;
         getJsonFromCalvin(cafeteria, mealType, function(data){
-            
-            if(data.length==0)
+            data = data[0];
+            if(data.status=="failure")
             {
-                response.tell(String(cafeteria)+" is not serving anything today");
+                response.tell(String(data.err));
             }
             else
             {
-                var meals = '';
-                for (var i = 0; i < data.length; i++) {
-                    if(i == data.length - 1)
-                        meals += data[i].name;
-                    else if(i == data.length -2)
-                        meals += data[i].name + " and ";
-                    else
-                        meals += data[i].name + ", ";
+                data = data.resp;
+                if(data.length==0)
+                {
+                    response.tell(String(cafeteria)+" is not serving anything today");
                 }
-                console.log('Helloworld ucsdDining test meals: ' + meals);
-                response.tell(String(cafeteria)+" is serving "+ String(meals) +" for "+ String(mealType) +" today");
+                else
+                {
+                    var meals = '';
+                    for (var i = 0; i < data.length; i++) {
+                        if(i == data.length - 1)
+                            meals += data[i].name;
+                        else if(i == data.length -2)
+                            meals += data[i].name + " and ";
+                        else
+                            meals += data[i].name + ", ";
+                    }
+                    console.log('Helloworld ucsdDining test meals: ' + meals);
+                    response.tell(String(cafeteria)+" is serving "+ String(meals) +" for "+ String(mealType) +" today");
+                }
             }
         }); 
     }
@@ -126,3 +134,4 @@ exports.handler = function (event, context) {
     var helloWorld = new HelloWorld();
     helloWorld.execute(event, context);
 };
+
