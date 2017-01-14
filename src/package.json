@@ -1,0 +1,11 @@
+{
+  "name": "alexaUcsdDining",
+  "version": "1.0.0",
+  "description": "Get menu at UCSD dining halls",
+  "main": "index.js",
+  "dependencies": {
+  },
+  "devDependencies": {},
+  "author": "Amazon.com",
+  "license": "SEE LICENSE IN license.md"
+}
