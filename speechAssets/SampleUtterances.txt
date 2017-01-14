@@ -18,3 +18,6 @@ cafeteriaMenu What is offered at {cafeteria}
 cafeteriaMenu What is offered at {cafeteria} for {mealType}
 cafeteriaMenu {cafeteria}
 cafeteriaMenu {mealType}
+cafeteriaMenu What are the {dietType} options for {mealType} at {cafeteria}
+cafeteriaMenu What {dietType} options are there at {cafeteria} for {dietType}
+cafeteriaMenu Tell me the {dietType} options at {cafeteria} for {mealType}
