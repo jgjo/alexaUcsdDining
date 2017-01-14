@@ -17,6 +17,38 @@
  *  User: "Alexa, tell Hello World to say hello"
  *  Alexa: "Hello World!"
  */
+ 
+ /* CALLING THE API */
+var http = require('https');
+
+var url = function(cafeteria, mealType){
+    var urlStr = 'https://alexa-skill-restaurant.herokuapp.com/items/' + cafeteria.toLowerCase() + '/' + mealType.toLowerCase();
+    //'/' + dietType.toLowerCase() ;
+    console.log("Helloworld ucsdDining request to alexa-skill-restaurant: " + urlStr); 
+    return urlStr;
+};
+
+var getJsonFromCalvin = function(cafeteria,mealType,callback){
+    
+    http.get(url(cafeteria,mealType), function(res){
+    var body = '';
+    console.log("Helloworld ucsdDining waiting data from alexa-skill-restaurant"); 
+    res.on('data', function(data){
+      body += data;
+      console.log("Helloworld ucsdDining receiving data from alexa-skill-restaurant: " + data); 
+    });
+
+    res.on('end', function(){
+      var result = JSON.parse(body);
+      console.log("Helloworld ucsdDining received data from alexa-skill-restaurant: " + body ); 
+      callback(result);
+    });
+
+  }).on('error', function(e){
+    console.log('Helloworld ucsdDining error in receiving data: ' + e);
+  });
+    
+};
 
 /**
  * App ID for the skill
@@ -61,16 +93,17 @@ HelloWorld.prototype.eventHandlers.onSessionEnded = function (sessionEndedReques
 
 HelloWorld.prototype.intentHandlers = {
     // register custom intent handlers
-    "cafeteriaMenu": function (intent, session, response) {
-         var speechText = "";
-
-        //Reprompt text in case the user does not respond
+    "cafeteriaMenu": function (intent, session, response) {  
+        
+        var speechText = "";
+        
+        //Reprompt text in case the user does not respond   
         var repromptText = "You can ask, what's there to eat today";
-
-        //get input slots
+        
+        //get input slots        
         var cafeteria = intent.slots.cafeteria.value;
-        var mealType = intent.slots.mealType.value;
-
+        var mealType = intent.slots.mealType.value;     
+        
         // save new information to attributes
         if(cafeteria!==undefined ) {
           session.attributes.cafeteria = String(cafeteria);
@@ -82,14 +115,53 @@ HelloWorld.prototype.intentHandlers = {
         var attMealType = session.attributes.mealType;
 
         //Produce response
+        var asyncResponse = false;
+        //Have all information
         if(attCafeteria!==undefined && attMealType!==undefined) {
-          speechText = "All information given. Querying " + String(attMealType)  + " meals at " + String(attCafeteria);
+            asyncResponse = true;
+            //make api call
+            getJsonFromCalvin(cafeteria, mealType, function(data){
+            data = data[0];
+            console.log('Helloworld ucsdDining response: ' + data);
+            //command fails
+            if(data.status=="failure")
+            {
+                speechText = String(data.err);
+            }
+            //command success
+            else
+            {
+                data = data.resp;
+                if(data.length==0)
+                {
+                    speechText = String(cafeteria)+" is not serving anything today";
+                }
+                else
+                {
+                    var meals = '';
+                    for (var i = 0; i < data.length; i++) {
+                        if(i == data.length - 1)
+                            meals += data[i].name;
+                        else if(i == data.length -2)
+                            meals += data[i].name + " and ";
+                        else
+                            meals += data[i].name + ", ";
+                    }
+                    
+                    speechText = String(cafeteria)+" is serving "+ String(meals) +" for "+ String(mealType) +" today";
+                }
+            }
+            response.ask(speechText);
+            });
+            
+            repromptText = "I am waiting for no reason";
+            
         }
-        if(attCafeteria!==undefined && attMealType===undefined) {
+        else if(attCafeteria!==undefined && attMealType===undefined) {
           speechText = "Are you looking for breakfast, lunch or dinner options?";
           repromptText = "Say breafast, lunch or dinner";
         }
-        if(attCafeteria===undefined && attMealType!==undefined) {
+        else if(attCafeteria===undefined && attMealType!==undefined) {
           speechText = "Which cafeteria do you want to eat at?";
           repromptText = "Here's the list of available cafeterias. Todo: Query list";
         }
@@ -102,7 +174,10 @@ HelloWorld.prototype.intentHandlers = {
             speech: repromptText,
             type: AlexaSkill.speechOutputType.PLAIN_TEXT
         };
-        response.ask(speechOutput, repromptOutput);
+        
+        if(!asyncResponse) {
+            response.ask(speechOutput, repromptOutput);
+        }
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
@@ -129,6 +204,7 @@ HelloWorld.prototype.intentHandlers = {
         var speechOutput = "Goodbye";
         response.tell(speechOutput);
     }
+    
 };
 
 // Create the handler that responds to the Alexa Request.
