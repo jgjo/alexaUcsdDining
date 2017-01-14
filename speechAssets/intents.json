@@ -12,6 +12,19 @@
           "type": "MEAL_TYPE"
         }
       ]
+    },
+        {
+      "intent": "dietaryRequirement",
+      "slots": [
+        {
+          "name": "diet",
+          "type": "DIET_LIST"
+        },
+                {
+          "name": "restrictedFood",
+          "type": "RESTRICTED_FOOD_LIST"
+        }
+      ]
     }
   ]
 }

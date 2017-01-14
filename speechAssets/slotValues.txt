@@ -19,5 +19,16 @@ Sixty-Four North
 Breakfast
 Lunch
 Dinner
+],
+"DIET_LIST" :
+[
+vegan
+vegetarian
+gluten friendly
+],
+"RESTRICTED_FOOD_LIST" :
+[
+gluten
+meat
 ]
 }

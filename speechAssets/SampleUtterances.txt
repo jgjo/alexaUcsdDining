@@ -1,7 +1,5 @@
 cafeteriaMenu What is for {mealType} at {cafeteria}
 cafeteriaMenu What can I eat for {mealType} at {cafeteria}
-cafeteriaMenu What can I eat for {mealType}
-cafeteriaMenu What can I eat at {cafeteria}
 cafeteriaMenu What is {cafeteria} serving for {mealType}
 cafeteriaMenu What is there to eat today 
 cafeteriaMenu What is there to eat for {mealType}
@@ -18,6 +16,11 @@ cafeteriaMenu What is offered at {cafeteria}
 cafeteriaMenu What is offered at {cafeteria} for {mealType}
 cafeteriaMenu {cafeteria}
 cafeteriaMenu {mealType}
-cafeteriaMenu What are the {dietType} options for {mealType} at {cafeteria}
-cafeteriaMenu What {dietType} options are there at {cafeteria} for {dietType}
-cafeteriaMenu Tell me the {dietType} options at {cafeteria} for {mealType}
+dietaryRequirement I am {diet}
+dietaryRequirement I can only eat {diet}
+dietaryRequirement Only show {diet}
+dietaryRequirement {diet}
+dietaryRequirement I can't eat {restrictedFood}
+dietaryRequirement I won't eat {restrictedFood}
+dietaryRequirement I don't want to eat {restrictedFood}
+dietaryRequirement I don't like eating {restrictedFood}
