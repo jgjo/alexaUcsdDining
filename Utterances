@@ -1,0 +1,3 @@
+cafeteriaMenu What is for {mealType} at {cafeteria}
+cafeteriaMenu What can I eat for {mealType} at {cafeteria}
+cafeteriaMenu What is {cafeteria} serving for {mealType}

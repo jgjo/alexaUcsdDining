@@ -1,0 +1,23 @@
+{
+"CAFETERIA_LIST" : 
+[
+64 Degrees,
+Canyon Vista,
+Foodworx,
+OceanView,
+Pines,
+The Bistro,
+Club Med,
+Flavors of The Word Food Truck,
+Goody's,
+Goody's To Go Truck,
+Roots,
+Sixty-Four North
+],
+"MEAL_TYPE" :
+[
+Breakfast,
+Lunch, 
+Dinner
+]
+}

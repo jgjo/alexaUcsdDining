@@ -1,0 +1,17 @@
+{
+  "intents": [
+    {
+      "intent": "cafeteriaMenu",
+      "slots": [
+        {
+          "name": "cafeteria",
+          "type": "CAFETERIA_LIST"
+        },
+        {
+          "name": "mealType",
+          "type": "MEAL_TYPE"
+        }
+      ]
+    }
+  ]
+}
