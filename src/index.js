@@ -21,18 +21,18 @@
  /* CALLING THE API */
 var http = require('https');
 
-var url = function(cafeteria, mealType, dietType){
+var url = function(cafeteria, mealType){
     var urlStr = 'https://alexa-skill-restaurant.herokuapp.com/items/' + cafeteria.toLowerCase() + '/' + mealType.toLowerCase();
     //'/' + dietType.toLowerCase() ;
     console.log("Helloworld ucsdDining request to alexa-skill-restaurant: " + urlStr); 
     return urlStr;
 };
 
-var getJsonFromCalvin = function(cafeteria,mealType,dietType,callback){
+var getJsonFromCalvin = function(cafeteria,mealType,callback){
     
-    http.get(url(cafeteria,mealType,dietType), function(res){
+    http.get(url(cafeteria,mealType), function(res){
     var body = '';
-
+    console.log("Helloworld ucsdDining waiting data from alexa-skill-restaurant"); 
     res.on('data', function(data){
       body += data;
       console.log("Helloworld ucsdDining receiving data from alexa-skill-restaurant: " + data); 
@@ -82,9 +82,7 @@ HelloWorld.prototype.eventHandlers.onSessionStarted = function (sessionStartedRe
 
 HelloWorld.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
     console.log("HelloWorld onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
-    var speechOutput = "Welcome to the Alexa Skills Kit, you can say hello";
-    var repromptText = "You can say hello";
-    response.ask(speechOutput, repromptText);
+    handleCafeteriaMenuIntent(session, response);
 };
 
 HelloWorld.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, session) {
@@ -95,23 +93,48 @@ HelloWorld.prototype.eventHandlers.onSessionEnded = function (sessionEndedReques
 
 HelloWorld.prototype.intentHandlers = {
     // register custom intent handlers
-    // register custom intent handlers
-    "cafeteriaMenu": function (intent, session, response) {
+    "cafeteriaMenu": function (intent, session, response) {  
+        
+        var speechText = "";
+        
+        //Reprompt text in case the user does not respond   
+        var repromptText = "You can ask, what is there to eat today";
+        
+        //get input slots        
         var cafeteria = intent.slots.cafeteria.value;
-        var mealType = intent.slots.mealType.value;
-        var dietType = intent.slots.dietType.value;
-        getJsonFromCalvin(cafeteria, mealType, dietType, function(data){
+        var mealType = intent.slots.mealType.value;     
+        
+        // save new information to attributes
+        if(cafeteria!==undefined ) {
+          session.attributes.cafeteria = String(cafeteria);
+        }
+        if(mealType!==undefined ) {
+          session.attributes.mealType = String(mealType);
+        }
+        var attCafeteria = session.attributes.cafeteria;
+        var attMealType = session.attributes.mealType;
+
+        //Produce response
+        var asyncResponse = false;
+        //Have all information
+        if(attCafeteria!==undefined && attMealType!==undefined) {
+            asyncResponse = true;
+            //make api call
+            getJsonFromCalvin(attCafeteria, attMealType, function(data){
             data = data[0];
+            console.log('Helloworld ucsdDining response: ' + data);
+            //command fails
             if(data.status=="failure")
             {
-                response.tell(String(data.err));
+                speechText = String(data.err);
             }
+            //command success
             else
             {
                 data = data.resp;
                 if(data.length==0)
                 {
-                    response.tell(String(cafeteria)+" is not serving anything today");
+                    speechText = String(attCafeteria)+" is not serving anything today";
                 }
                 else
                 {
@@ -124,12 +147,61 @@ HelloWorld.prototype.intentHandlers = {
                         else
                             meals += data[i].name + ", ";
                     }
-                    console.log('Helloworld ucsdDining test meals: ' + meals);
-                    response.tell(String(cafeteria)+" is serving "+ String(meals) +" for "+ String(mealType) +" today");
+                    
+                    speechText = String(attCafeteria)+" is serving "+ String(meals) +" for "+ String(attMealType) +" today";
                 }
             }
-        }); 
+            response.ask(speechText);
+            });
+        }
+        else if(attCafeteria!==undefined && attMealType===undefined) {
+          speechText = "Are you looking for breakfast, lunch or dinner options?";
+          repromptText = "Say breafast, lunch or dinner";
+        }
+        else if(attCafeteria===undefined && attMealType!==undefined) {
+          speechText = "Which cafeteria do you want to eat at?";
+          repromptText = "Here's the list of available cafeterias. Todo: Query list";
+        }
+
+        var speechOutput = {
+            speech: speechText,
+            type: AlexaSkill.speechOutputType.PLAIN_TEXT
+        };
+        var repromptOutput = {
+            speech: repromptText,
+            type: AlexaSkill.speechOutputType.PLAIN_TEXT
+        };
+        
+        if(!asyncResponse) {
+            response.ask(speechOutput, repromptOutput);
+        }
+    },
+
+    "AMAZON.HelpIntent": function (intent, session, response) {
+        var speechText = "HelpIntent was triggered";
+
+        var speechOutput = {
+            speech: speechText,
+            type: AlexaSkill.speechOutputType.PLAIN_TEXT
+        };
+        var repromptOutput = {
+            speech: speechText,
+            type: AlexaSkill.speechOutputType.PLAIN_TEXT
+        };
+        // For the repromptText, play the speechOutput again
+        response.ask(speechOutput, repromptOutput);
+    },
+
+    "AMAZON.StopIntent": function (intent, session, response) {
+        var speechOutput = "Goodbye";
+        response.tell(speechOutput);
+    },
+
+    "AMAZON.CancelIntent": function (intent, session, response) {
+        var speechOutput = "Goodbye";
+        response.tell(speechOutput);
     }
+    
 };
 
 // Create the handler that responds to the Alexa Request.
@@ -138,4 +210,3 @@ exports.handler = function (event, context) {
     var helloWorld = new HelloWorld();
     helloWorld.execute(event, context);
 };
-
