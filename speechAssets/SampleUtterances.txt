@@ -1,4 +1,19 @@
 cafeteriaMenu What is for {mealType} at {cafeteria}
 cafeteriaMenu What can I eat for {mealType} at {cafeteria}
-cafeteriaMenu What can I eat at {cafeteria} for {mealType} 
+cafeteriaMenu What can I eat at {cafeteria} for {mealType}
+cafeteriaMenu What can I eat at {cafeteria}
+cafeteriaMenu What can I eat for {mealType} 
 cafeteriaMenu What is {cafeteria} serving for {mealType}
+cafeteriaMenu What is there to eat today 
+cafeteriaMenu What is there to eat for {mealType}
+cafeteriaMenu What is there to eat today at {cafeteria}
+cafeteriaMenu I want to eat at {cafeteria}
+cafeteriaMenu I want to eat at {cafeteria} for {mealType}
+cafeteriaMenu I want to eat {mealType}
+cafeteriaMenu I want to eat {mealType} at {cafeteria}
+cafeteriaMenu What does {cafeteria} offer today
+cafeteriaMenu What does {cafeteria} offer today for {mealType}
+cafeteriaMenu What is today's offer at {cafeteria}
+cafeteriaMenu What is today's {mealType} offer
+cafeteriaMenu What is offered at {cafeteria} 
+cafeteriaMenu What is offered at {cafeteria} for {mealType}

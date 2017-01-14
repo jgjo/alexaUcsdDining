@@ -50,9 +50,7 @@ HelloWorld.prototype.eventHandlers.onSessionStarted = function (sessionStartedRe
 
 HelloWorld.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
     console.log("HelloWorld onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
-    var speechOutput = "Welcome to the Alexa Skills Kit, you can say hello";
-    var repromptText = "You can say hello";
-    response.ask(speechOutput, repromptText);
+    handleCafeteriaMenuIntent(session, response);
 };
 
 HelloWorld.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, session) {
@@ -64,14 +62,72 @@ HelloWorld.prototype.eventHandlers.onSessionEnded = function (sessionEndedReques
 HelloWorld.prototype.intentHandlers = {
     // register custom intent handlers
     "cafeteriaMenu": function (intent, session, response) {
+         var speechText = "";
+
+        //Reprompt text in case the user does not respond
+        var repromptText = "You can ask, what's there to eat today";
+
+        //get input slots
         var cafeteria = intent.slots.cafeteria.value;
         var mealType = intent.slots.mealType.value;
-        //session['cafeteria'] = String(cafeteria);
-        //session['mealType'] = String(mealType);
 
-        var output = String(cafeteria)+" is serving fries for "+ String(mealType) +" today. ";
+        // save new information to attributes
+        if(cafeteria!==undefined ) {
+          session.attributes.cafeteria = String(cafeteria);
+        }
+        if(mealType!==undefined ) {
+          session.attributes.mealType = String(mealType);
+        }
+        var attCafeteria = session.attributes.cafeteria;
+        var attMealType = session.attributes.mealType;
 
-        response.tell(output); 
+        //Produce response
+        if(attCafeteria!==undefined && attMealType!==undefined) {
+          speechText = "All information given. Querying " + String(attMealType)  + " meals at " + String(attCafeteria);
+        }
+        if(attCafeteria!==undefined && attMealType===undefined) {
+          speechText = "Are you looking for breakfast, lunch or dinner options?";
+          repromptText = "Say breafast, lunch or dinner";
+        }
+        if(attCafeteria===undefined && attMealType!==undefined) {
+          speechText = "Which cafeteria do you want to eat at?";
+          repromptText = "Here's the list of available cafeterias. Todo: Query list";
+        }
+
+        var speechOutput = {
+            speech: speechText,
+            type: AlexaSkill.speechOutputType.PLAIN_TEXT
+        };
+        var repromptOutput = {
+            speech: repromptText,
+            type: AlexaSkill.speechOutputType.PLAIN_TEXT
+        };
+        response.ask(speechOutput, repromptOutput);
+    },
+
+    "AMAZON.HelpIntent": function (intent, session, response) {
+        var speechText = "HelpIntent was triggered";
+
+        var speechOutput = {
+            speech: speechText,
+            type: AlexaSkill.speechOutputType.PLAIN_TEXT
+        };
+        var repromptOutput = {
+            speech: speechText,
+            type: AlexaSkill.speechOutputType.PLAIN_TEXT
+        };
+        // For the repromptText, play the speechOutput again
+        response.ask(speechOutput, repromptOutput);
+    },
+
+    "AMAZON.StopIntent": function (intent, session, response) {
+        var speechOutput = "Goodbye";
+        response.tell(speechOutput);
+    },
+
+    "AMAZON.CancelIntent": function (intent, session, response) {
+        var speechOutput = "Goodbye";
+        response.tell(speechOutput);
     }
 };
 
