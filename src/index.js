@@ -29,7 +29,8 @@ var url = function(cafeteria, mealType){
     return urlStr;
 };
 
-var cafeterias = ["64 degrees","canyon vista","foodworx","oceanview","pines","the bistro","club med","flavors of the word food truck","goody's","goody's to go truck","roots","sixty-four north","warren college","sixth college","the village east","village east","school of medicine"];
+//var cafeterias = ["64 degrees","canyon vista","foodworx","oceanview","pines","the bistro","club med","flavors of the word food truck","goody's","goody's to go truck","roots","sixty-four north","warren college","sixth college","the village east","village east","school of medicine"];
+var cafeterias = ["64°","canyon vista","ocean view","food works","pines","the bistro","club med","flavors of the world","flavors of the world food truck","goodies","goodies to go truck","goodies to go ","roots","sixty four north","warren college","sixth college","the village east","school of medicine","revelle college ","marshall college","muir college ","food truck","food trucks"];
 
 var getDietaryChoices = function(session) {
     var options = []
@@ -159,7 +160,7 @@ HelloWorld.prototype.intentHandlers = {
               break;
 
             case "sixth college":
-              cafeteria = "foodworx";
+              cafeteria = "food works";
               break;
 
             case "the village east":
@@ -173,6 +174,14 @@ HelloWorld.prototype.intentHandlers = {
             case "school of medicine":
               cafeteria = "club med";
               break;
+
+            case "flavors of the world":
+              cafeteria = "flavors of the world food truck";
+              break;
+
+            case "goodies to go":
+              cafeteria = "goodies to go truck";
+              break;
             }
         }
 
@@ -182,13 +191,13 @@ HelloWorld.prototype.intentHandlers = {
         if(cafeteria!==undefined) {
           switch(cafeteria.toLowerCase().trim()) {
             case "revelle college":
-              mensaChoices = ["64 Degrees","Sixty-Four North"];
+              mensaChoices = ["64°","Sixty Four North"];
               isFoodTruck = false;
               askMensaChoice(mensaChoices,cafeteria,isFoodTruck,response);
               skipOutput = true;
               break;
             case "marshall college":
-              mensaChoices = ["OceanView","Goody's"];
+              mensaChoices = ["Ocean View","Goodies"];
               isFoodTruck = false;
               askMensaChoice(mensaChoices,cafeteria,isFoodTruck,response);
               skipOutput = true;
@@ -200,7 +209,13 @@ HelloWorld.prototype.intentHandlers = {
               skipOutput = true;
               break;
             case "food truck":
-              mensaChoices = ["Flavors of the World Food Truck","Goody's To-Go Truck"];
+              mensaChoices = ["Flavors of The World Food Truck","Goodies To Go Truck"];
+              isFoodTruck = true;
+              askMensaChoice(mensaChoices,cafeteria,isFoodTruck,response);
+              skipOutput = true;
+              break;
+            case "food trucks":
+              mensaChoices = ["Flavors of The World Food Truck","Goodies To Go Truck"];
               isFoodTruck = true;
               askMensaChoice(mensaChoices,cafeteria,isFoodTruck,response);
               skipOutput = true;
@@ -269,7 +284,7 @@ HelloWorld.prototype.intentHandlers = {
                       }
                       //format meals nicely
                       var meals_formatted = [meals.slice(0, -1).join(', '), meals.slice(-1)[0]].join(meals.length < 2 ? '' : ' and ');
-                      speechText = String(attCafeteria)+" is serving "+ String(meals_formatted) +" for "+ String(attMealType) +" today";
+                      speechText = String(attCafeteria)+" is serving the following meals for " + String(attMealType) + " today: " + String(meals_formatted);
                   }
               }
               response.ask(speechText);
