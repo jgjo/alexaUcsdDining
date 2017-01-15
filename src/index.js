@@ -17,15 +17,22 @@
  *  User: "Alexa, tell Hello World to say hello"
  *  Alexa: "Hello World!"
  */
- 
+
  /* CALLING THE API */
 var http = require('https');
 
 var url = function(cafeteria, mealType){
-    var urlStr = 'https://alexa-skill-restaurant.herokuapp.com/items/' + cafeteria.toLowerCase() + '/' + mealType.toLowerCase();
-    
+    var endpointUrl = "https://alexa-skill-restaurant.herokuapp.com/";
+    var urlStr = endpointUrl + 'items/';
+
+    if((cafeteria === null || cafeteria === undefined) &&
+        (mealType === null || mealType === undefined))
+        return urlStr;
+
+    urlStr += cafeteria.toLowerCase() + '/' + mealType.toLowerCase();
+
     //'/' + dietType.toLowerCase() ;
-    console.log("Helloworld ucsdDining request to alexa-skill-restaurant: " + urlStr); 
+    console.log("Helloworld ucsdDining request to alexa-skill-restaurant: " + urlStr);
     return urlStr;
 };
 
@@ -42,7 +49,7 @@ var getDietaryChoices = function(session) {
     }
     if(session.attributes.gluten === true) {
       options.push("gluten friendly");
-    }  
+    }
     return options;
 }
 
@@ -75,25 +82,29 @@ var askMensaChoice = function (mensaChoices, location, isFoodTruck, response){
 }
 
 var getJsonFromCalvin = function(cafeteria,mealType,callback){
-    
+
     http.get(url(cafeteria,mealType), function(res){
     var body = '';
-    console.log("Helloworld ucsdDining waiting data from alexa-skill-restaurant"); 
+    console.log("Helloworld ucsdDining waiting data from alexa-skill-restaurant");
     res.on('data', function(data){
       body += data;
-      console.log("Helloworld ucsdDining receiving data from alexa-skill-restaurant: " + data); 
+      console.log("Helloworld ucsdDining receiving data from alexa-skill-restaurant: " + data);
     });
 
     res.on('end', function(){
       var result = JSON.parse(body);
-      console.log("Helloworld ucsdDining received data from alexa-skill-restaurant: " + body ); 
+      console.log("Helloworld ucsdDining received data from alexa-skill-restaurant: " + body );
       callback(result);
     });
 
   }).on('error', function(e){
     console.log('Helloworld ucsdDining error in receiving data: ' + e);
   });
-    
+
+};
+
+var getAllItemsJsonFromCalvin = function(callback) {
+    getJsonFromCalvin(null,null,callback);
 };
 
 /**
@@ -141,16 +152,15 @@ HelloWorld.prototype.eventHandlers.onSessionEnded = function (sessionEndedReques
 
 HelloWorld.prototype.intentHandlers = {
     // register custom intent handlers
-    "cafeteriaMenu": function (intent, session, response) {  
-        
+    "cafeteriaMenu": function (intent, session, response) {
+
         var speechText = "";
-        
+
         //Reprompt text in case the user does not respond   
         var repromptText = "You can ask, what is there to eat today";
-        
+
         //get input slots        
         var cafeteria = intent.slots.cafeteria.value;
-        var mealType = intent.slots.mealType.value; 
 
         //detect synonyms for cafeteria - given the college
         if(cafeteria!==undefined) {
@@ -221,104 +231,102 @@ HelloWorld.prototype.intentHandlers = {
               skipOutput = true;
               break;
             }
+
+        var mealType = intent.slots.mealType.value;
+
+        if(!skipOutput) {
+            //verify cafeteria input
+            if (cafeteria !== undefined && cafeterias.indexOf(cafeteria.toLowerCase().trim()) <= -1) {
+                // not a valid cafeteria
+                cafeteria = undefined;
+                // TODO find closest match and prompt user for it
+            }
+
+            // save new information to attributes
+            if (cafeteria !== undefined) {
+                session.attributes.cafeteria = String(cafeteria).toLowerCase().trim();
+            }
+            if (mealType !== undefined) {
+                session.attributes.mealType = String(mealType).toLowerCase().trim();
+            }
+            var attCafeteria = session.attributes.cafeteria;
+            var attMealType = session.attributes.mealType;
+
+            //Produce response
+            var asyncResponse = false;
+            //Have all information
+            if (attCafeteria !== undefined && attMealType !== undefined) {
+                asyncResponse = true;
+                //make api call
+                getJsonFromCalvin(attCafeteria, attMealType, function (data) {
+                    data = data[0];
+                    console.log('Helloworld ucsdDining response: ' + data);
+                    //command fails
+                    if (data.status == "failure") {
+                        speechText = String(data.err);
+                    }
+                    //command success
+                    else {
+                        data = data.resp;
+                        if (data.length === 0) {
+                            speechText = String(attCafeteria) + " is not serving anything today";
+                        }
+                        else {
+                            meals = [];
+                            var dietChoices = getDietaryChoices(session);
+                            diet_filter = false;
+                            if (dietChoices.length >= 1) {
+                                diet_filter = true;
+                            }
+                            for (var i = 0; i < data.length; i++) {
+                                meal = data[i];
+                                if (!diet_filter || checkMealAgainstDiet(meal, dietChoices)) {
+                                    // Meal meets the dietary choices and is therefore listed
+                                    meals.push(meal.name);
+                                }
+                                else {
+                                    // Meal doesn't meet the dietary choices
+                                    continue;
+                                }
+                            }
+                            //format meals nicely
+                            var meals_formatted = [meals.slice(0, -1).join(', '), meals.slice(-1)[0]].join(meals.length < 2 ? '' : ' and ').replace("&", "and");
+                            speechText = String(attCafeteria) + " is serving the following meals for " + String(attMealType) + " today: " + String(meals_formatted);
+                        }
+                    }
+                    response.ask(speechText);
+                });
+            }
+            else if (attCafeteria !== undefined && attMealType === undefined) {
+                speechText = "Are you looking for breakfast, lunch or dinner options?";
+                repromptText = "Say breafast, lunch or dinner";
+            }
+            else if (attCafeteria === undefined && attMealType !== undefined) {
+                speechText = "Which cafeteria do you want to eat at?";
+                repromptText = "Here's the list of available cafeterias. Todo: Query list";
+            }
+            else if (attCafeteria === undefined && attMealType === undefined) {
+                speechText = "I'm sorry. Please say again which cafeteria you want to eat at.";
+                repromptText = "Here's the list of available cafeterias. Todo: Query list";
+            }
+
+            var speechOutput = {
+                speech: speechText,
+                type: AlexaSkill.speechOutputType.PLAIN_TEXT
+            };
+            var repromptOutput = {
+                speech: repromptText,
+                type: AlexaSkill.speechOutputType.PLAIN_TEXT
+            };
+
+            if (!asyncResponse) {
+                response.ask(speechOutput, repromptOutput);
+            }
         }
-
-        if(!skipOutput){
-          //verify cafeteria input 
-          if(cafeteria !== undefined && cafeterias.indexOf(cafeteria.toLowerCase().trim()) <= -1) {
-            // not a valid cafeteria
-            cafeteria = undefined;
-            // TODO find closest match and prompt user for it
-          }
-          
-          // save new information to attributes
-          if(cafeteria!==undefined ) {
-            session.attributes.cafeteria = String(cafeteria).toLowerCase().trim();
-          }
-          if(mealType!==undefined ) {
-            session.attributes.mealType = String(mealType).toLowerCase().trim();
-          }
-          var attCafeteria = session.attributes.cafeteria;
-          var attMealType = session.attributes.mealType;
-
-          //Produce response
-          var asyncResponse = false;
-          //Have all information
-          if(attCafeteria!==undefined && attMealType!==undefined) {
-              asyncResponse = true;
-              //make api call
-              getJsonFromCalvin(attCafeteria, attMealType, function(data){
-              data = data[0];
-              console.log('Helloworld ucsdDining response: ' + data);
-              //command fails
-              if(data.status=="failure")
-              {
-                  speechText = String(data.err);
-              }
-              //command success
-              else
-              {
-                  data = data.resp;
-                  if(data.length===0)
-                  {
-                      speechText = String(attCafeteria)+" is not serving anything today";
-                  }
-                  else
-                  {
-                      meals = [];
-                      var dietChoices =  getDietaryChoices(session);
-                      diet_filter = false;
-                      if(dietChoices.length >= 1) {
-                        diet_filter = true;
-                      }
-                      for (var i = 0; i < data.length; i++) {
-                          meal = data[i];
-                          if(!diet_filter || checkMealAgainstDiet(meal, dietChoices)){
-                            // Meal meets the dietary choices and is therefore listed
-                            meals.push(meal.name);
-                          }
-                          else {
-                            // Meal doesn't meet the dietary choices
-                            continue;
-                          }
-                      }
-                      //format meals nicely
-                      var meals_formatted = [meals.slice(0, -1).join(', '), meals.slice(-1)[0]].join(meals.length < 2 ? '' : ' and ').replace("&","and");
-                      speechText = String(attCafeteria)+" is serving the following meals for " + String(attMealType) + " today: " + String(meals_formatted);
-                  }
-              }
-              response.ask(speechText);
-              });
-          }
-          else if(attCafeteria!==undefined && attMealType===undefined) {
-            speechText = "Are you looking for breakfast, lunch or dinner options?";
-            repromptText = "Say breafast, lunch or dinner";
-          }
-          else if(attCafeteria===undefined && attMealType!==undefined) {
-            speechText = "Which cafeteria do you want to eat at?";
-            repromptText = "Here's the list of available cafeterias. Todo: Query list";
-          }
-          else if(attCafeteria===undefined && attMealType===undefined) {
-            speechText = "I'm sorry. Please say again which cafeteria you want to eat at.";
-            repromptText = "Here's the list of available cafeterias. Todo: Query list";
-          }
-
-          var speechOutput = {
-              speech: speechText,
-              type: AlexaSkill.speechOutputType.PLAIN_TEXT
-          };
-          var repromptOutput = {
-              speech: repromptText,
-              type: AlexaSkill.speechOutputType.PLAIN_TEXT
-          };
-          
-          if(!asyncResponse) {
-              response.ask(speechOutput, repromptOutput);
-          }
       }
     },
 
-    "dietaryRequirement": function (intent, session, response) { 
+    "dietaryRequirement": function (intent, session, response) {
       var diet = intent.slots.diet.value;
       var restrictedFood = intent.slots.restrictedFood.value;
       var vegetarianChoice;
@@ -371,6 +379,94 @@ HelloWorld.prototype.intentHandlers = {
       response.ask(speechText + options.join(", ") + " options.");
     },
 
+    "showAll" : function (intent, session, response) {
+        var speechText;
+        var errorText = "I'm sorry, I couldn't find any restaurants";
+
+        var lookFor = intent.slots.food.value;
+
+        var repromptText = "Say burger, pizza or salad";
+        if(lookFor === null || lookFor === undefined) {
+            speechText = "What kind of food are you looking for?";
+        }
+
+        if (lookFor[lookFor.length-1] === 's') {
+            lookFor = lookFor.substr(0,lookFor.length-1)
+        }
+
+
+        getAllItemsJsonFromCalvin(function(data){
+            data = data[0];
+            console.log('Helloworld ucsdDining response: ' + data);
+            //command fails
+            if(data.status=="failure")
+            {
+                console.log(String(data.err));
+                speechText = errorText;
+            }
+            //command success
+            else
+            {
+                data = data.resp;
+                if(data.length===0)
+                {
+                    speechText = errorText;
+                }
+                else
+                {
+                    var filteredRestaurants = {};
+                    for(var i=0; i<data.length; i++) {
+                        var mealItem = data[i];
+                        if(mealItem.name.indexOf(lookFor)!= -1) {
+                            console.log('Found ' + lookFor + ' in ' + mealItem.restaurant_name);
+                            if (filteredRestaurants[mealItem.restaurant_name] == undefined) {
+                                filteredRestaurants[mealItem.restaurant_name] = 1
+                            }
+                            else {
+                                filteredRestaurants[mealItem.restaurant_name] += 1
+                            }
+                        }
+                    }
+
+                    speechText = "I found ";
+                    console.log('filteredRestaurants ' + JSON.stringify(filteredRestaurants));
+                    for (var key in filteredRestaurants) {
+                        var itemCount = filteredRestaurants[key];
+                        var optionText = itemCount > 1 ? ' options in ' : ' option in ';
+                        speechText += itemCount + optionText + key + ', ';
+                    }
+                    speechText += ' for ' + intent.slots.food.value;
+
+                    console.log(speechText);
+                    // removing last ,
+                    var replacementChar = ',';
+                    var pos = speechText.lastIndexOf(replacementChar);
+                    speechText = speechText.substring(0,pos) + speechText.substring(pos+1);
+
+                    console.log(speechText);
+                    // replacing last remainng , with and
+                    pos = speechText.lastIndexOf(replacementChar);
+                    if(pos != -1) {
+                        speechText = speechText.substring(0,pos) + ' and ' + speechText.substring(pos+1);
+                    }
+                    console.log(speechText);
+                }
+            }
+
+            var speechOutput = {
+                speech: speechText,
+                type: AlexaSkill.speechOutputType.PLAIN_TEXT
+            };
+
+            var repromptOutput = {
+                speech: repromptText,
+                type: AlexaSkill.speechOutputType.PLAIN_TEXT
+            };
+
+            response.ask(speechOutput, repromptOutput);
+        });
+    },
+
     "AMAZON.HelpIntent": function (intent, session, response) {
         var speechText = "To get a list of today's offered meals please say the name of your desired cafeteria and indicate if you're interested in breakfast, lunch or dinner options.";
 
@@ -395,7 +491,7 @@ HelloWorld.prototype.intentHandlers = {
         var speechOutput = "Goodbye";
         response.tell(speechOutput);
     }
-    
+
 };
 
 // Create the handler that responds to the Alexa Request.
