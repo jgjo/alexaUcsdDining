@@ -283,7 +283,7 @@ HelloWorld.prototype.intentHandlers = {
                           }
                       }
                       //format meals nicely
-                      var meals_formatted = [meals.slice(0, -1).join(', '), meals.slice(-1)[0]].join(meals.length < 2 ? '' : ' and ');
+                      var meals_formatted = [meals.slice(0, -1).join(', '), meals.slice(-1)[0]].join(meals.length < 2 ? '' : ' and ').replace("&","and");
                       speechText = String(attCafeteria)+" is serving the following meals for " + String(attMealType) + " today: " + String(meals_formatted);
                   }
               }
