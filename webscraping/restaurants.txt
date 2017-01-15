@@ -1,0 +1,60 @@
+{
+        "_id" : "587a17089a993466bff7516d",
+        "name" : "64 degrees",
+        "url_id" : "64"
+},
+{
+        "_id" : "587a17089a993466bff7516e",
+        "name" : "canyon vista",
+        "url_id" : "24"
+},
+{
+        "_id" : "587a17089a993466bff7516f",
+        "name" : "oceanview",
+        "url_id" : "05"
+},
+{
+        "_id" : "587a17089a993466bff75170",
+        "name" : "foodworx",
+        "url_id" : "11"
+},
+{
+        "_id" : "587a17089a993466bff75171",
+        "name" : "pines",
+        "url_id" : "01"
+},
+{
+        "_id" : "587a17089a993466bff75172",
+        "name" : "the bistro",
+        "url_id" : "27"
+},
+{
+        "_id" : "587a17089a993466bff75173",
+        "name" : "club med",
+        "url_id" : "15"
+},
+{
+        "_id" : "587a17089a993466bff75174",
+        "name" : "flavors of the world food truck",
+        "url_id" : "39"
+},
+{
+        "_id" : "587a17089a993466bff75175",
+        "name" : "goodys",
+        "url_id" : "06"
+},
+{
+        "_id" : "587a17089a993466bff75176",
+        "name" : "goodys to go truck",
+        "url_id" : "38"
+},
+{
+        "_id" : "587a17089a993466bff75177",
+        "name" : "roots",
+        "url_id" : "32"
+},
+{
+        "_id" : "587a17089a993466bff75178",
+        "name" : "sixty four north",
+        "url_id" : "65"
+}

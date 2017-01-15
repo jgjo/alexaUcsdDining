@@ -1,0 +1,12 @@
+64	64 Degrees
+24	Canyon Vista
+05	OceanView
+11	Foodworx
+01	Pines
+27	The Bistro
+15	Club Med
+39	Flavors of The World Food Truck
+06	Goodys
+38	Goodys To Go Truck
+32	Roots
+65	Sixty Four North

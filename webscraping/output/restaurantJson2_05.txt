@@ -1,0 +1,81 @@
+{
+    "name": "artichoke & spinach",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},{
+    "name": "cattleman",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},{
+    "name": "chicken artichoke",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},{
+    "name": "margherita",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},{
+    "name": "mushroom & sausage",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},{
+    "name": "southwest",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},{
+    "name": "vegetarian",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},{
+    "name": "fire roasted torrey's chicken wings",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},{
+    "name": "garlic cuscinos",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},{
+    "name": "artichoke & spinach",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},{
+    "name": "cattleman",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},{
+    "name": "chicken artichoke",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},{
+    "name": "margherita",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},{
+    "name": "mushroom & sausage",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},{
+    "name": "southwest",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},{
+    "name": "vegetarian",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516f"
+},

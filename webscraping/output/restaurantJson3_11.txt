@@ -1,0 +1,273 @@
+{
+    "name": "belgian waffles",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "build your own bagel bar",
+    "meal_type": "breakfast",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "steelcut oatmeal",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "egg salad sandwich",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "grilled cheese sandwich",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "ham sandwich",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "roast beef sandwich",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "tuna sandwich",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "turkey sandwich",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "veggie sandwich",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "buffalo blue salad",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "caesar chicken salad",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "california wrap",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "chicken caesar wrap",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "cobb salad",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "foodworx chicken wrap",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "mandarin salad",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "sesame chicken wrap",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "southwest cobb salad",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "spring bounty salad",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "black bean burger",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "corn dog-beef & pork",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "crispy french fries",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "meat lover's personal pizza",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "pepperoni pizza",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "vegetarian pizza",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "chicken tortilla soup",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "pasta fagioli soup",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "vegetarian chili",
+    "meal_type": "lunch",
+    "diet_type": [
+        {
+            "type": "vegan"
+        },
+        {
+            "type": "gluten-friendly"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "egg salad sandwich",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "grilled cheese sandwich",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "ham sandwich",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "roast beef sandwich",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "tuna sandwich",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "turkey sandwich",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "veggie sandwich",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "buffalo blue salad",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "caesar chicken salad",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "california wrap",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "chicken caesar wrap",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "cobb salad",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "foodworx chicken wrap",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "mandarin salad",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "sesame chicken wrap",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "southwest cobb salad",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "spring bounty salad",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "byo personal pizzas",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "chicken tortilla soup",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "pasta fagioli soup",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75170"
+},{
+    "name": "vegetarian chili",
+    "meal_type": "dinner",
+    "diet_type": [
+        {
+            "type": "vegan"
+        },
+        {
+            "type": "gluten-friendly"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75170"
+},
