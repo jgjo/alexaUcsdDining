@@ -30,3 +30,7 @@ dietaryRequirement I can't eat {restrictedFood}
 dietaryRequirement I won't eat {restrictedFood}
 dietaryRequirement I don't want to eat {restrictedFood}
 dietaryRequirement I don't like eating {restrictedFood}
+showAll Show all items
+showAll Show all {food} items
+showAll Where can I have some {food}
+showAll Where can I have a {food}

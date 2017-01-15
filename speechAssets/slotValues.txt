@@ -41,5 +41,11 @@ gluten friendly
 [
 gluten
 meat
+],
+"FOOD_LIST" :
+[
+burger
+pizza
+salad
 ]
 }
