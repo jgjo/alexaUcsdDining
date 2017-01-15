@@ -1,0 +1,202 @@
+{
+    "name": "chipotle black bean burger",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "gardein burger",
+    "meal_type": "lunch",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "hamburger",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "herbed chicken sandwich",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "turkey burger",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "french fries",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "sweet potato fries",
+    "meal_type": "lunch",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "chicken tortilla soup",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "vegetarian chili",
+    "meal_type": "lunch",
+    "diet_type": [
+        {
+            "type": "vegan"
+        },
+        {
+            "type": "gluten-friendly"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "crunchy orange chicken",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "spicy dragon shrimp",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "pork potstickers",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "chipotle black bean burger",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "gardein burger",
+    "meal_type": "dinner",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "hamburger",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "herbed chicken sandwich",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "turkey burger",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "french fries",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "sweet potato fries",
+    "meal_type": "dinner",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "cauliflower mashed potatoes",
+    "meal_type": "dinner",
+    "diet_type": [
+        {
+            "type": "gluten-friendly"
+        },
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "house side salad",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "papaya slaw",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "risotto",
+    "meal_type": "dinner",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        },
+        {
+            "type": "gluten-friendly"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "korean bbq ribs",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "rotisserie chicken",
+    "meal_type": "dinner",
+    "diet_type": [
+        {
+            "type": "gluten-friendly"
+        },
+        {
+            "type": "dietitian-approved"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "chicken tortilla soup",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "vegetarian chili",
+    "meal_type": "dinner",
+    "diet_type": [
+        {
+            "type": "vegan"
+        },
+        {
+            "type": "gluten-friendly"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "pork potstickers",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "crunchy orange chicken",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},{
+    "name": "spicy dragon shrimp",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff7516d"
+},

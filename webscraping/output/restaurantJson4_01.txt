@@ -1,0 +1,493 @@
+{
+    "name": "waffle",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "breakfast burrito",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "breakfast quesadilla",
+    "meal_type": "breakfast",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "dietitian's delight",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "dietitian-approved"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "tater barrels",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "beans",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegan"
+        },
+        {
+            "type": "gluten-friendly"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "biscuit",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "cage free scrambled eggs",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        },
+        {
+            "type": "gluten-friendly"
+        },
+        {
+            "type": "dietitian-approved"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "fresh tortillas",
+    "meal_type": "breakfast",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "pork sausage links",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "gluten-friendly"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "sausage gravy",
+    "meal_type": "breakfast",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "scrambled egg whites",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        },
+        {
+            "type": "gluten-friendly"
+        },
+        {
+            "type": "dietitian-approved"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "smoked bacon",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "gluten-friendly"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "tater barrels",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "veggie sausage",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "cereal with milk",
+    "meal_type": "breakfast",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "steelcut oatmeal",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "whole apple",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegan"
+        },
+        {
+            "type": "gluten-friendly"
+        },
+        {
+            "type": "dietitian-approved"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "whole banana",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "gluten-friendly"
+        },
+        {
+            "type": "vegan"
+        },
+        {
+            "type": "dietitian-approved"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "whole orange",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegan"
+        },
+        {
+            "type": "dietitian-approved"
+        },
+        {
+            "type": "gluten-friendly"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "cut fresh fruit",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegan"
+        },
+        {
+            "type": "gluten-friendly"
+        },
+        {
+            "type": "dietitian-approved"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "yogurt bar",
+    "meal_type": "breakfast",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        },
+        {
+            "type": "dietitian-approved"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "carnitas quesadilla",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "la cantina burrito",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "pines cantina taco",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "quesadilla",
+    "meal_type": "lunch",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "taco salad",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "taquitos supreme",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "aztec pinto beans",
+    "meal_type": "lunch",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "cilantro rice",
+    "meal_type": "lunch",
+    "diet_type": [
+        {
+            "type": "vegan"
+        },
+        {
+            "type": "gluten-friendly"
+        },
+        {
+            "type": "dietitian-approved"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "crispy french fries",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "fried chicken fritters",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "cheese pizza",
+    "meal_type": "lunch",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "pepperoni pizza",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "tortellini w/ sun dried tomato cream",
+    "meal_type": "lunch",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "garlic bread",
+    "meal_type": "lunch",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "roasted cauliflower",
+    "meal_type": "lunch",
+    "diet_type": [
+        {
+            "type": "gluten-friendly"
+        },
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "vegetarian chili",
+    "meal_type": "lunch",
+    "diet_type": [
+        {
+            "type": "vegan"
+        },
+        {
+            "type": "gluten-friendly"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "chicken tortilla soup",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "pasta fagioli soup",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "fresh salad bar",
+    "meal_type": "lunch",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "carnitas quesadilla",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "la cantina burrito",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "pines cantina taco",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "quesadilla",
+    "meal_type": "dinner",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "taco salad",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "taquitos supreme",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "aztec pinto beans",
+    "meal_type": "dinner",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "cilantro rice",
+    "meal_type": "dinner",
+    "diet_type": [
+        {
+            "type": "vegan"
+        },
+        {
+            "type": "gluten-friendly"
+        },
+        {
+            "type": "dietitian-approved"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "cheese pizza",
+    "meal_type": "dinner",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "pepperoni pizza",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "tortellini w/ sun dried tomato cream",
+    "meal_type": "dinner",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "garlic bread",
+    "meal_type": "dinner",
+    "diet_type": [
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "roasted cauliflower",
+    "meal_type": "dinner",
+    "diet_type": [
+        {
+            "type": "gluten-friendly"
+        },
+        {
+            "type": "vegetarian"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "vegetarian chili",
+    "meal_type": "dinner",
+    "diet_type": [
+        {
+            "type": "vegan"
+        },
+        {
+            "type": "gluten-friendly"
+        }
+    ],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "chicken tortilla soup",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "pasta fagioli soup",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},{
+    "name": "fresh salad bar",
+    "meal_type": "dinner",
+    "diet_type": [],
+    "restaurant_id": "587a17089a993466bff75171"
+},
